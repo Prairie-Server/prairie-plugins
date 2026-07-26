@@ -5,8 +5,8 @@ import (
 	"sort"
 	"strings"
 
-	pluginv1 "github.com/Silo-Server/silo-plugin-sdk/pkg/pluginproto/silo/plugin/v1"
-	pluginmanifest "github.com/Silo-Server/silo-plugin-sdk/pkg/pluginsdk/manifest"
+	pluginv1 "github.com/prairie-server/prairie-plugin-sdk/pkg/pluginproto/prairie/plugin/v1"
+	pluginmanifest "github.com/prairie-server/prairie-plugin-sdk/pkg/pluginsdk/manifest"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
@@ -53,8 +53,8 @@ func BuildPackageFromRelease(repo string, source *SourceManifest, release Releas
 	if strings.TrimSpace(source.GetPluginId()) == "" {
 		return CatalogPackage{}, fmt.Errorf("source manifest plugin_id is required")
 	}
-	if strings.TrimSpace(source.GetSiloApiVersion()) == "" {
-		return CatalogPackage{}, fmt.Errorf("source manifest silo_api_version is required")
+	if strings.TrimSpace(source.GetPrairieApiVersion()) == "" {
+		return CatalogPackage{}, fmt.Errorf("source manifest prairie_api_version is required")
 	}
 	if len(source.GetCapabilities()) == 0 {
 		return CatalogPackage{}, fmt.Errorf("source manifest capabilities are required")

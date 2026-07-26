@@ -4,21 +4,21 @@ import (
 	"encoding/json"
 	"testing"
 
-	pluginv1 "github.com/Silo-Server/silo-plugin-sdk/pkg/pluginproto/silo/plugin/v1"
+	pluginv1 "github.com/prairie-server/prairie-plugin-sdk/pkg/pluginproto/prairie/plugin/v1"
 )
 
 func TestBuildPackageFromRelease_MinimalManifestAndAssets(t *testing.T) {
 	source := &SourceManifest{
-		PluginId:       "silo.tmdb",
+		PluginId:       "prairie.tmdb",
 		Version:        "1.2.3",
-		SiloApiVersion: "v1",
-		Presentation:   catalogTestPresentation("https://github.com/Silo-Server/silo-plugin-metadata-tmdb"),
+		PrairieApiVersion: "v1",
+		Presentation:   catalogTestPresentation("https://github.com/prairie-server/prairie-plugin-metadata-tmdb"),
 		Capabilities: []*pluginv1.CapabilityDescriptor{
 			{
 				Type:        "metadata_provider.v1",
 				Id:          "tmdb",
 				DisplayName: "TMDB",
-				Description: "TMDB metadata provider for Silo.",
+				Description: "TMDB metadata provider for Prairie.",
 			},
 		},
 	}
@@ -33,15 +33,15 @@ func TestBuildPackageFromRelease_MinimalManifestAndAssets(t *testing.T) {
 		},
 	}
 
-	pkg, err := BuildPackageFromRelease("Silo-Server/silo-plugin-metadata-tmdb", source, release)
+	pkg, err := BuildPackageFromRelease("prairie-server/prairie-plugin-metadata-tmdb", source, release)
 	if err != nil {
 		t.Fatalf("BuildPackageFromRelease() error = %v", err)
 	}
 
-	if pkg.RepoURL != "https://github.com/Silo-Server/silo-plugin-metadata-tmdb" {
+	if pkg.RepoURL != "https://github.com/prairie-server/prairie-plugin-metadata-tmdb" {
 		t.Fatalf("RepoURL = %q", pkg.RepoURL)
 	}
-	if pkg.Manifest.GetPluginId() != "silo.tmdb" {
+	if pkg.Manifest.GetPluginId() != "prairie.tmdb" {
 		t.Fatalf("PluginID = %q", pkg.Manifest.GetPluginId())
 	}
 	if pkg.Manifest.GetVersion() != "1.2.3" {
@@ -60,10 +60,10 @@ func TestBuildPackageFromRelease_MinimalManifestAndAssets(t *testing.T) {
 
 func TestBuildPackageFromRelease_TagWinsOverManifestVersion(t *testing.T) {
 	source := &SourceManifest{
-		PluginId:       "silo.tmdb",
+		PluginId:       "prairie.tmdb",
 		Version:        "1.2.2",
-		SiloApiVersion: "v1",
-		Presentation:   catalogTestPresentation("https://github.com/Silo-Server/silo-plugin-metadata-tmdb"),
+		PrairieApiVersion: "v1",
+		Presentation:   catalogTestPresentation("https://github.com/prairie-server/prairie-plugin-metadata-tmdb"),
 		Capabilities: []*pluginv1.CapabilityDescriptor{
 			{Type: "metadata_provider.v1", Id: "tmdb"},
 		},
@@ -76,7 +76,7 @@ func TestBuildPackageFromRelease_TagWinsOverManifestVersion(t *testing.T) {
 		},
 	}
 
-	pkg, err := BuildPackageFromRelease("Silo-Server/silo-plugin-metadata-tmdb", source, release)
+	pkg, err := BuildPackageFromRelease("prairie-server/prairie-plugin-metadata-tmdb", source, release)
 	if err != nil {
 		t.Fatalf("BuildPackageFromRelease() error = %v", err)
 	}
@@ -87,9 +87,9 @@ func TestBuildPackageFromRelease_TagWinsOverManifestVersion(t *testing.T) {
 
 func TestBuildPackageFromRelease_RequiresCompletePresentation(t *testing.T) {
 	source := &SourceManifest{
-		PluginId:       "silo.tmdb",
+		PluginId:       "prairie.tmdb",
 		Version:        "1.2.3",
-		SiloApiVersion: "v1",
+		PrairieApiVersion: "v1",
 		Capabilities: []*pluginv1.CapabilityDescriptor{
 			{Type: "metadata_provider.v1", Id: "tmdb"},
 		},
@@ -102,28 +102,28 @@ func TestBuildPackageFromRelease_RequiresCompletePresentation(t *testing.T) {
 		},
 	}
 
-	if _, err := BuildPackageFromRelease("Silo-Server/silo-plugin-metadata-tmdb", source, release); err == nil {
+	if _, err := BuildPackageFromRelease("prairie-server/prairie-plugin-metadata-tmdb", source, release); err == nil {
 		t.Fatal("BuildPackageFromRelease() accepted a manifest without presentation metadata")
 	}
 }
 
 func TestBuildPackageFromRelease_PreservesManifestMetadataAndConfigSchema(t *testing.T) {
 	source, err := DecodeSourceManifest([]byte(`{
-	  "plugin_id": "silo.requests.arr",
+	  "plugin_id": "prairie.requests.arr",
 	  "version": "0.1.0",
 	  "checksum": "__CHECKSUM__",
-	  "silo_api_version": "v1",
+	  "prairie_api_version": "v1",
 	  "presentation": {
 	    "display_name": "Sonarr & Radarr Requests",
 	    "summary": "Routes requests to Sonarr and Radarr.",
 	    "description_markdown": "Routes approved requests.",
 	    "setup_markdown": "Add a connection.",
-	    "homepage_url": "https://github.com/Silo-Server/silo-plugins-requests-arr",
-	    "source_url": "https://github.com/Silo-Server/silo-plugins-requests-arr",
-	    "support_url": "https://github.com/Silo-Server/silo-plugins-requests-arr/issues",
-	    "changelog_url": "https://github.com/Silo-Server/silo-plugins-requests-arr/releases",
-	    "publisher_name": "Silo",
-	    "publisher_url": "https://github.com/Silo-Server",
+	    "homepage_url": "https://github.com/prairie-server/prairie-plugins-requests-arr",
+	    "source_url": "https://github.com/prairie-server/prairie-plugins-requests-arr",
+	    "support_url": "https://github.com/prairie-server/prairie-plugins-requests-arr/issues",
+	    "changelog_url": "https://github.com/prairie-server/prairie-plugins-requests-arr/releases",
+	    "publisher_name": "Prairie",
+	    "publisher_url": "https://github.com/prairie-server",
 	    "license_spdx": "AGPL-3.0-only"
 	  },
 	  "supported_platforms": [{"os": "linux", "arch": "amd64"}],
@@ -170,7 +170,7 @@ func TestBuildPackageFromRelease_PreservesManifestMetadataAndConfigSchema(t *tes
 		},
 	}
 
-	pkg, err := BuildPackageFromRelease("Silo-Server/silo-plugins-requests-arr", source, release)
+	pkg, err := BuildPackageFromRelease("prairie-server/prairie-plugins-requests-arr", source, release)
 	if err != nil {
 		t.Fatalf("BuildPackageFromRelease() error = %v", err)
 	}
@@ -206,7 +206,7 @@ func TestBuildPackageFromRelease_PreservesManifestMetadataAndConfigSchema(t *tes
 		} `json:"plugins"`
 	}
 	if err := json.Unmarshal(data, &decoded); err != nil {
-		t.Fatalf("standard json decode like Silo catalog_service failed: %v\n%s", err, data)
+		t.Fatalf("standard json decode like Prairie catalog_service failed: %v\n%s", err, data)
 	}
 	decodedField := decoded.Plugins[0].Manifest.GetCapabilities()[0].GetConfigSchema()[0].GetAdminForm().GetFields()[0]
 	if decodedField.GetControl() != pluginv1.AdminFormControl_ADMIN_FORM_CONTROL_SELECT {
@@ -224,8 +224,8 @@ func catalogTestPresentation(sourceURL string) *pluginv1.PluginPresentation {
 		SourceUrl:           sourceURL,
 		SupportUrl:          sourceURL + "/issues",
 		ChangelogUrl:        sourceURL + "/releases",
-		PublisherName:       "Silo",
-		PublisherUrl:        "https://github.com/Silo-Server",
+		PublisherName:       "Prairie",
+		PublisherUrl:        "https://github.com/prairie-server",
 		LicenseSpdx:         "AGPL-3.0-only",
 	}
 }
@@ -235,16 +235,16 @@ func TestUpsertPackage_ReplacesExistingPluginAndSorts(t *testing.T) {
 		Plugins: []CatalogPackage{
 			{
 				Manifest: &pluginv1.PluginManifest{
-					PluginId:       "silo.tvdb",
+					PluginId:       "prairie.tvdb",
 					Version:        "1.0.0",
-					SiloApiVersion: "v1",
+					PrairieApiVersion: "v1",
 				},
 			},
 			{
 				Manifest: &pluginv1.PluginManifest{
-					PluginId:       "silo.tmdb",
+					PluginId:       "prairie.tmdb",
 					Version:        "1.0.0",
-					SiloApiVersion: "v1",
+					PrairieApiVersion: "v1",
 				},
 			},
 		},
@@ -252,11 +252,11 @@ func TestUpsertPackage_ReplacesExistingPluginAndSorts(t *testing.T) {
 
 	updated := CatalogPackage{
 		Manifest: &pluginv1.PluginManifest{
-			PluginId:       "silo.tmdb",
+			PluginId:       "prairie.tmdb",
 			Version:        "1.2.3",
-			SiloApiVersion: "v1",
+			PrairieApiVersion: "v1",
 		},
-		RepoURL: "https://github.com/Silo-Server/silo-plugin-metadata-tmdb",
+		RepoURL: "https://github.com/prairie-server/prairie-plugin-metadata-tmdb",
 	}
 
 	index = UpsertPackage(index, updated)
@@ -264,13 +264,13 @@ func TestUpsertPackage_ReplacesExistingPluginAndSorts(t *testing.T) {
 	if len(index.Plugins) != 2 {
 		t.Fatalf("Plugins length = %d, want 2", len(index.Plugins))
 	}
-	if index.Plugins[0].Manifest.GetPluginId() != "silo.tmdb" {
+	if index.Plugins[0].Manifest.GetPluginId() != "prairie.tmdb" {
 		t.Fatalf("Plugins[0].PluginID = %q", index.Plugins[0].Manifest.GetPluginId())
 	}
 	if index.Plugins[0].Manifest.GetVersion() != "1.2.3" {
 		t.Fatalf("Plugins[0].Version = %q", index.Plugins[0].Manifest.GetVersion())
 	}
-	if index.Plugins[1].Manifest.GetPluginId() != "silo.tvdb" {
+	if index.Plugins[1].Manifest.GetPluginId() != "prairie.tvdb" {
 		t.Fatalf("Plugins[1].PluginID = %q", index.Plugins[1].Manifest.GetPluginId())
 	}
 }

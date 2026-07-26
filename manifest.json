@@ -2,9 +2,9 @@
   "plugins": [
     {
       "manifest": {
-        "plugin_id": "silo.audiobook-metadata",
+        "plugin_id": "prairie.audiobook-metadata",
         "version": "0.1.4",
-        "silo_api_version": "v1",
+        "prairie_api_version": "v1",
         "supported_platforms": [
           {
             "os": "darwin",
@@ -35,36 +35,36 @@
         "presentation": {
           "display_name": "Audiobook Metadata",
           "summary": "Fetch audiobook metadata and artwork from multiple book and audiobook sources.",
-          "description_markdown": "Matches audiobook items across Audnexus, AudiMeta, iTunes, Audible, Storytel, BookBeat, Audioteka, and AudiobookCovers. It combines those sources into metadata and artwork for Silo audiobook libraries.",
+          "description_markdown": "Matches audiobook items across Audnexus, AudiMeta, iTunes, Audible, Storytel, BookBeat, Audioteka, and AudiobookCovers. It combines those sources into metadata and artwork for Prairie audiobook libraries.",
           "setup_markdown": "Install the plugin and add **Audiobook Metadata** to the metadata provider chain for an audiobook library. The default sources need no plugin configuration; upstream availability and rate limits still apply.",
-          "homepage_url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook",
-          "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook",
-          "support_url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/issues",
-          "changelog_url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases",
-          "publisher_name": "Silo",
-          "publisher_url": "https://github.com/Silo-Server",
+          "homepage_url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook",
+          "source_url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook",
+          "support_url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook/issues",
+          "changelog_url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook/releases",
+          "publisher_name": "Prairie",
+          "publisher_url": "https://github.com/prairie-server",
           "license_spdx": "AGPL-3.0-only"
         }
       },
-      "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.4/checksums.txt",
+      "repo_url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook",
+      "checksums_url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook/releases/download/v0.1.4/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.4/plugin-darwin-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook/releases/download/v0.1.4/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.4/plugin-linux-amd64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook/releases/download/v0.1.4/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-audiobook/releases/download/v0.1.4/plugin-linux-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook/releases/download/v0.1.4/plugin-linux-arm64"
         }
       }
     },
     {
       "manifest": {
-        "plugin_id": "silo.autoscan.arr",
+        "plugin_id": "prairie.autoscan.arr",
         "version": "0.1.2",
-        "silo_api_version": "v1",
+        "prairie_api_version": "v1",
         "supported_platforms": [
           {
             "os": "linux",
@@ -84,42 +84,42 @@
             "type": "scan_source.v1",
             "id": "arr",
             "display_name": "Sonarr / Radarr",
-            "description": "Triggers Silo rescans from Sonarr/Radarr import and rename history."
+            "description": "Triggers Prairie rescans from Sonarr/Radarr import and rename history."
           }
         ],
         "presentation": {
           "display_name": "Sonarr \u0026 Radarr Autoscan",
-          "summary": "Detect imports and renames in Sonarr or Radarr and queue targeted Silo scans.",
-          "description_markdown": "Polls recent Sonarr and Radarr history for completed imports and file renames. It returns the affected paths to Silo so the host can apply path rewrites, deduplicate work, and scan only the relevant library locations.",
-          "setup_markdown": "Install the plugin, then create an Autoscan source in Silo using a Sonarr or Radarr connection. Configure any path rewrites on the Silo source. The plugin stores no credentials and has no separate global configuration.",
-          "homepage_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr",
-          "source_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr",
-          "support_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/issues",
-          "changelog_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases",
-          "publisher_name": "Silo",
-          "publisher_url": "https://github.com/Silo-Server",
+          "summary": "Detect imports and renames in Sonarr or Radarr and queue targeted Prairie scans.",
+          "description_markdown": "Polls recent Sonarr and Radarr history for completed imports and file renames. It returns the affected paths to Prairie so the host can apply path rewrites, deduplicate work, and scan only the relevant library locations.",
+          "setup_markdown": "Install the plugin, then create an Autoscan source in Prairie using a Sonarr or Radarr connection. Configure any path rewrites on the Prairie source. The plugin stores no credentials and has no separate global configuration.",
+          "homepage_url": "https://github.com/prairie-server/prairie-plugin-autoscan-arr",
+          "source_url": "https://github.com/prairie-server/prairie-plugin-autoscan-arr",
+          "support_url": "https://github.com/prairie-server/prairie-plugin-autoscan-arr/issues",
+          "changelog_url": "https://github.com/prairie-server/prairie-plugin-autoscan-arr/releases",
+          "publisher_name": "Prairie",
+          "publisher_url": "https://github.com/prairie-server",
           "license_spdx": "NOASSERTION"
         }
       },
-      "repo_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.2/checksums.txt",
+      "repo_url": "https://github.com/prairie-server/prairie-plugin-autoscan-arr",
+      "checksums_url": "https://github.com/prairie-server/prairie-plugin-autoscan-arr/releases/download/v0.1.2/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.2/plugin-darwin-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-autoscan-arr/releases/download/v0.1.2/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.2/plugin-linux-amd64"
+          "url": "https://github.com/prairie-server/prairie-plugin-autoscan-arr/releases/download/v0.1.2/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-autoscan-arr/releases/download/v0.1.2/plugin-linux-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-autoscan-arr/releases/download/v0.1.2/plugin-linux-arm64"
         }
       }
     },
     {
       "manifest": {
-        "plugin_id": "silo.ebook-metadata",
+        "plugin_id": "prairie.ebook-metadata",
         "version": "0.1.1",
-        "silo_api_version": "v1",
+        "prairie_api_version": "v1",
         "supported_platforms": [
           {
             "os": "darwin",
@@ -229,34 +229,34 @@
           "summary": "Enrich ebook libraries with book metadata from public and credentialed sources.",
           "description_markdown": "Searches OpenLibrary, Google Books, ISBNdb, Hardcover, Goodreads, Amazon, Anna's Archive, Project Gutenberg, BookBrainz, FantasticFiction, ISFDB, LibraryThing, Internet Archive, WorldCat, and Douban. Results include book identity, descriptions, contributors, and artwork.",
           "setup_markdown": "Install the plugin and add **Ebook Metadata** to an ebook library's metadata provider chain. Optionally limit `enabled_sources`, set a regional hint, or add API keys for Google Books, ISBNdb, and Hardcover. Sources that require a key are skipped until one is configured.",
-          "homepage_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook",
-          "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook",
-          "support_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/issues",
-          "changelog_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases",
-          "publisher_name": "Silo",
-          "publisher_url": "https://github.com/Silo-Server",
+          "homepage_url": "https://github.com/prairie-server/prairie-plugin-metadata-ebook",
+          "source_url": "https://github.com/prairie-server/prairie-plugin-metadata-ebook",
+          "support_url": "https://github.com/prairie-server/prairie-plugin-metadata-ebook/issues",
+          "changelog_url": "https://github.com/prairie-server/prairie-plugin-metadata-ebook/releases",
+          "publisher_name": "Prairie",
+          "publisher_url": "https://github.com/prairie-server",
           "license_spdx": "NOASSERTION"
         }
       },
-      "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.1/checksums.txt",
+      "repo_url": "https://github.com/prairie-server/prairie-plugin-metadata-ebook",
+      "checksums_url": "https://github.com/prairie-server/prairie-plugin-metadata-ebook/releases/download/v0.1.1/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.1/plugin-darwin-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-ebook/releases/download/v0.1.1/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.1/plugin-linux-amd64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-ebook/releases/download/v0.1.1/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-ebook/releases/download/v0.1.1/plugin-linux-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-ebook/releases/download/v0.1.1/plugin-linux-arm64"
         }
       }
     },
     {
       "manifest": {
-        "plugin_id": "silo.manga-metadata",
+        "plugin_id": "prairie.manga-metadata",
         "version": "0.1.1",
-        "silo_api_version": "v1",
+        "prairie_api_version": "v1",
         "supported_platforms": [
           {
             "os": "darwin",
@@ -368,34 +368,34 @@
           "summary": "Match manga and add rich metadata, covers, contributors, and publication details.",
           "description_markdown": "Uses MangaBaka as the primary source, with MangaDex as a deep fallback and optional AniList banner artwork. It can also keep a local MangaBaka database for fast, rate-limit-free matching on large libraries.",
           "setup_markdown": "Install the plugin and add **Manga Metadata** to a manga library's provider chain. The defaults use live sources. For large libraries, enable the local MangaBaka dump and ensure the configured storage path has about 1.5 GB available; the initial download is roughly 335 MB.",
-          "homepage_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga",
-          "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga",
-          "support_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/issues",
-          "changelog_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases",
-          "publisher_name": "Silo",
-          "publisher_url": "https://github.com/Silo-Server",
+          "homepage_url": "https://github.com/prairie-server/prairie-plugin-metadata-manga",
+          "source_url": "https://github.com/prairie-server/prairie-plugin-metadata-manga",
+          "support_url": "https://github.com/prairie-server/prairie-plugin-metadata-manga/issues",
+          "changelog_url": "https://github.com/prairie-server/prairie-plugin-metadata-manga/releases",
+          "publisher_name": "Prairie",
+          "publisher_url": "https://github.com/prairie-server",
           "license_spdx": "AGPL-3.0-only"
         }
       },
-      "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.1/checksums.txt",
+      "repo_url": "https://github.com/prairie-server/prairie-plugin-metadata-manga",
+      "checksums_url": "https://github.com/prairie-server/prairie-plugin-metadata-manga/releases/download/v0.1.1/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.1/plugin-darwin-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-manga/releases/download/v0.1.1/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.1/plugin-linux-amd64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-manga/releases/download/v0.1.1/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-manga/releases/download/v0.1.1/plugin-linux-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-manga/releases/download/v0.1.1/plugin-linux-arm64"
         }
       }
     },
     {
       "manifest": {
-        "plugin_id": "silo.requests.arr",
+        "plugin_id": "prairie.requests.arr",
         "version": "0.1.0",
-        "silo_api_version": "v1",
+        "prairie_api_version": "v1",
         "supported_platforms": [
           {
             "os": "linux",
@@ -645,25 +645,25 @@
           }
         ]
       },
-      "repo_url": "https://github.com/Silo-Server/silo-plugins-requests-arr",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugins-requests-arr/releases/download/v0.1.0/checksums.txt",
+      "repo_url": "https://github.com/prairie-server/prairie-plugins-requests-arr",
+      "checksums_url": "https://github.com/prairie-server/prairie-plugins-requests-arr/releases/download/v0.1.0/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugins-requests-arr/releases/download/v0.1.0/plugin-darwin-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugins-requests-arr/releases/download/v0.1.0/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugins-requests-arr/releases/download/v0.1.0/plugin-linux-amd64"
+          "url": "https://github.com/prairie-server/prairie-plugins-requests-arr/releases/download/v0.1.0/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugins-requests-arr/releases/download/v0.1.0/plugin-linux-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugins-requests-arr/releases/download/v0.1.0/plugin-linux-arm64"
         }
       }
     },
     {
       "manifest": {
-        "plugin_id": "silo.requests.seerr",
+        "plugin_id": "prairie.requests.seerr",
         "version": "0.1.0",
-        "silo_api_version": "v1",
+        "prairie_api_version": "v1",
         "supported_platforms": [
           {
             "os": "linux",
@@ -701,7 +701,7 @@
                     {
                       "key": "requester_mode",
                       "label": "Attribute requests to",
-                      "description": "Admin user: all requests come from the API-key owner (auto-approved). Map to Silo users: attribute each request to the Seerr user matching the requester's email (created if missing).",
+                      "description": "Admin user: all requests come from the API-key owner (auto-approved). Map to Prairie users: attribute each request to the Seerr user matching the requester's email (created if missing).",
                       "control": 6,
                       "default_value": "admin",
                       "options": [
@@ -711,7 +711,7 @@
                         },
                         {
                           "value": "mapped",
-                          "label": "Map to Silo users"
+                          "label": "Map to Prairie users"
                         }
                       ]
                     },
@@ -733,7 +733,7 @@
                     {
                       "key": "require_mapped_user",
                       "label": "Fail the request if the user can't be mapped",
-                      "description": "On: a request whose Silo user can't be matched/created on Seerr fails instead of being submitted under the admin.",
+                      "description": "On: a request whose Prairie user can't be matched/created on Seerr fails instead of being submitted under the admin.",
                       "control": 5,
                       "default_value": false,
                       "show_when": [
@@ -753,25 +753,25 @@
           }
         ]
       },
-      "repo_url": "https://github.com/Silo-Server/silo-plugins-requests-seerr",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugins-requests-seerr/releases/download/v0.1.0/checksums.txt",
+      "repo_url": "https://github.com/prairie-server/prairie-plugins-requests-seerr",
+      "checksums_url": "https://github.com/prairie-server/prairie-plugins-requests-seerr/releases/download/v0.1.0/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugins-requests-seerr/releases/download/v0.1.0/plugin-darwin-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugins-requests-seerr/releases/download/v0.1.0/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugins-requests-seerr/releases/download/v0.1.0/plugin-linux-amd64"
+          "url": "https://github.com/prairie-server/prairie-plugins-requests-seerr/releases/download/v0.1.0/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugins-requests-seerr/releases/download/v0.1.0/plugin-linux-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugins-requests-seerr/releases/download/v0.1.0/plugin-linux-arm64"
         }
       }
     },
     {
       "manifest": {
-        "plugin_id": "silo.sportarr",
+        "plugin_id": "prairie.sportarr",
         "version": "1.0.2",
-        "silo_api_version": "v1",
+        "prairie_api_version": "v1",
         "supported_platforms": [
           {
             "os": "darwin",
@@ -824,36 +824,36 @@
         "presentation": {
           "display_name": "Sportarr Metadata",
           "summary": "Build sports libraries from Sportarr league, season, and event metadata.",
-          "description_markdown": "Maps Sportarr leagues to series, seasons to seasons, and events to episodes so sports libraries behave like familiar TV libraries in Silo. The provider is installed disabled by default so administrators can opt in where it fits their library layout.",
+          "description_markdown": "Maps Sportarr leagues to series, seasons to seasons, and events to episodes so sports libraries behave like familiar TV libraries in Prairie. The provider is installed disabled by default so administrators can opt in where it fits their library layout.",
           "setup_markdown": "Install the plugin, configure the Sportarr base URL if you do not use `https://sportarr.net`, then enable **Sportarr Metadata** in the metadata provider chain for the relevant sports library.",
           "homepage_url": "https://sportarr.net",
-          "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr",
-          "support_url": "https://github.com/Silo-Server/silo-server/issues",
-          "changelog_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases",
-          "publisher_name": "Silo",
-          "publisher_url": "https://github.com/Silo-Server",
+          "source_url": "https://github.com/prairie-server/prairie-plugin-metadata-sportarr",
+          "support_url": "https://github.com/prairie-server/prairie-server/issues",
+          "changelog_url": "https://github.com/prairie-server/prairie-plugin-metadata-sportarr/releases",
+          "publisher_name": "Prairie",
+          "publisher_url": "https://github.com/prairie-server",
           "license_spdx": "AGPL-3.0-or-later"
         }
       },
-      "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.2/checksums.txt",
+      "repo_url": "https://github.com/prairie-server/prairie-plugin-metadata-sportarr",
+      "checksums_url": "https://github.com/prairie-server/prairie-plugin-metadata-sportarr/releases/download/v1.0.2/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.2/plugin-darwin-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-sportarr/releases/download/v1.0.2/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.2/plugin-linux-amd64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-sportarr/releases/download/v1.0.2/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-sportarr/releases/download/v1.0.2/plugin-linux-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-sportarr/releases/download/v1.0.2/plugin-linux-arm64"
         }
       }
     },
     {
       "manifest": {
-        "plugin_id": "silo.theintrodb",
+        "plugin_id": "prairie.theintrodb",
         "version": "0.1.1",
-        "silo_api_version": "v1",
+        "prairie_api_version": "v1",
         "supported_platforms": [
           {
             "os": "darwin",
@@ -908,33 +908,33 @@
           "description_markdown": "Adds community-maintained playback markers from TheIntroDB to movies and TV episodes. It can fetch markers without an account and can submit corrections or new markers when an API key is configured.",
           "setup_markdown": "Install the plugin and enable **TheIntroDB** as a marker provider. Fetching works without configuration. Add your TheIntroDB API key if you want to submit markers or view account statistics.",
           "homepage_url": "https://theintrodb.org",
-          "source_url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb",
-          "support_url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/issues",
-          "changelog_url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases",
-          "publisher_name": "Silo",
-          "publisher_url": "https://github.com/Silo-Server",
+          "source_url": "https://github.com/prairie-server/prairie-plugin-markers-theintrodb",
+          "support_url": "https://github.com/prairie-server/prairie-plugin-markers-theintrodb/issues",
+          "changelog_url": "https://github.com/prairie-server/prairie-plugin-markers-theintrodb/releases",
+          "publisher_name": "Prairie",
+          "publisher_url": "https://github.com/prairie-server",
           "license_spdx": "AGPL-3.0-only"
         }
       },
-      "repo_url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.1.1/checksums.txt",
+      "repo_url": "https://github.com/prairie-server/prairie-plugin-markers-theintrodb",
+      "checksums_url": "https://github.com/prairie-server/prairie-plugin-markers-theintrodb/releases/download/v0.1.1/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.1.1/plugin-darwin-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-markers-theintrodb/releases/download/v0.1.1/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.1.1/plugin-linux-amd64"
+          "url": "https://github.com/prairie-server/prairie-plugin-markers-theintrodb/releases/download/v0.1.1/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-markers-theintrodb/releases/download/v0.1.1/plugin-linux-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-markers-theintrodb/releases/download/v0.1.1/plugin-linux-arm64"
         }
       }
     },
     {
       "manifest": {
-        "plugin_id": "silo.tmdb",
+        "plugin_id": "prairie.tmdb",
         "version": "1.2.20",
-        "silo_api_version": "v1",
+        "prairie_api_version": "v1",
         "supported_platforms": [
           {
             "os": "darwin",
@@ -980,36 +980,36 @@
         "presentation": {
           "display_name": "TMDB Metadata",
           "summary": "Fetch movie and TV metadata and artwork from The Movie Database.",
-          "description_markdown": "Provides metadata for movies, series, seasons, and episodes, plus image resolution for TMDB artwork stored by Silo. It is a general-purpose first-party provider for movie and television libraries.",
-          "setup_markdown": "TMDB Metadata is installed as a default Silo plugin. Add or enable **TMDB** in a library's metadata provider chain; no plugin-specific configuration is required.",
+          "description_markdown": "Provides metadata for movies, series, seasons, and episodes, plus image resolution for TMDB artwork stored by Prairie. It is a general-purpose first-party provider for movie and television libraries.",
+          "setup_markdown": "TMDB Metadata is installed as a default Prairie plugin. Add or enable **TMDB** in a library's metadata provider chain; no plugin-specific configuration is required.",
           "homepage_url": "https://www.themoviedb.org",
-          "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb",
-          "support_url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/issues",
-          "changelog_url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases",
-          "publisher_name": "Silo",
-          "publisher_url": "https://github.com/Silo-Server",
+          "source_url": "https://github.com/prairie-server/prairie-plugin-metadata-tmdb",
+          "support_url": "https://github.com/prairie-server/prairie-plugin-metadata-tmdb/issues",
+          "changelog_url": "https://github.com/prairie-server/prairie-plugin-metadata-tmdb/releases",
+          "publisher_name": "Prairie",
+          "publisher_url": "https://github.com/prairie-server",
           "license_spdx": "AGPL-3.0-or-later"
         }
       },
-      "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.20/checksums.txt",
+      "repo_url": "https://github.com/prairie-server/prairie-plugin-metadata-tmdb",
+      "checksums_url": "https://github.com/prairie-server/prairie-plugin-metadata-tmdb/releases/download/v1.2.20/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.20/plugin-darwin-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-tmdb/releases/download/v1.2.20/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.20/plugin-linux-amd64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-tmdb/releases/download/v1.2.20/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tmdb/releases/download/v1.2.20/plugin-linux-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-tmdb/releases/download/v1.2.20/plugin-linux-arm64"
         }
       }
     },
     {
       "manifest": {
-        "plugin_id": "silo.tvdb",
+        "plugin_id": "prairie.tvdb",
         "version": "1.2.24",
-        "silo_api_version": "v1",
+        "prairie_api_version": "v1",
         "supported_platforms": [
           {
             "os": "darwin",
@@ -1054,28 +1054,28 @@
         "presentation": {
           "display_name": "TVDB Metadata",
           "summary": "Fetch series, season, episode, and artwork metadata from TheTVDB.",
-          "description_markdown": "Provides television metadata for series, seasons, and episodes, plus image resolution for TVDB artwork stored by Silo. It complements other providers when a library relies on TVDB identities or ordering.",
-          "setup_markdown": "TVDB Metadata is installed as a default Silo plugin. Add or enable **TVDB** in a television library's metadata provider chain; no plugin-specific configuration is required.",
+          "description_markdown": "Provides television metadata for series, seasons, and episodes, plus image resolution for TVDB artwork stored by Prairie. It complements other providers when a library relies on TVDB identities or ordering.",
+          "setup_markdown": "TVDB Metadata is installed as a default Prairie plugin. Add or enable **TVDB** in a television library's metadata provider chain; no plugin-specific configuration is required.",
           "homepage_url": "https://thetvdb.com",
-          "source_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb",
-          "support_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/issues",
-          "changelog_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases",
-          "publisher_name": "Silo",
-          "publisher_url": "https://github.com/Silo-Server",
+          "source_url": "https://github.com/prairie-server/prairie-plugin-metadata-tvdb",
+          "support_url": "https://github.com/prairie-server/prairie-plugin-metadata-tvdb/issues",
+          "changelog_url": "https://github.com/prairie-server/prairie-plugin-metadata-tvdb/releases",
+          "publisher_name": "Prairie",
+          "publisher_url": "https://github.com/prairie-server",
           "license_spdx": "AGPL-3.0-or-later"
         }
       },
-      "repo_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb",
-      "checksums_url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.2.24/checksums.txt",
+      "repo_url": "https://github.com/prairie-server/prairie-plugin-metadata-tvdb",
+      "checksums_url": "https://github.com/prairie-server/prairie-plugin-metadata-tvdb/releases/download/v1.2.24/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.2.24/plugin-darwin-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-tvdb/releases/download/v1.2.24/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.2.24/plugin-linux-amd64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-tvdb/releases/download/v1.2.24/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Silo-Server/silo-plugin-metadata-tvdb/releases/download/v1.2.24/plugin-linux-arm64"
+          "url": "https://github.com/prairie-server/prairie-plugin-metadata-tvdb/releases/download/v1.2.24/plugin-linux-arm64"
         }
       }
     }

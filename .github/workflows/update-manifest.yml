@@ -45,9 +45,14 @@ jobs:
           VERSION: ${{ inputs.version }}
         run: |
           case "${PLUGIN}" in
-            requests-arr) REPO="Silo-Server/silo-plugins-requests-arr" ;;
-            requests-seerr) REPO="Silo-Server/silo-plugins-requests-seerr" ;;
-            *) REPO="Silo-Server/silo-plugin-${PLUGIN}" ;;
+            audiobook-metadata) REPO="prairie-server/prairie-plugin-metadata-audiobook" ;;
+            autoscan-arr) REPO="prairie-server/prairie-plugin-autoscan-arr" ;;
+            requests-arr) REPO="prairie-server/prairie-plugins-requests-arr" ;;
+            requests-seerr) REPO="prairie-server/prairie-plugins-requests-seerr" ;;
+            sportarr) REPO="prairie-server/prairie-plugin-metadata-sportarr" ;;
+            tmdb) REPO="prairie-server/prairie-plugin-metadata-tmdb" ;;
+            tvdb) REPO="prairie-server/prairie-plugin-metadata-tvdb" ;;
+            *) echo "Unknown plugin: ${PLUGIN}" >&2; exit 1 ;;
           esac
           go run ./cmd/update-catalog -repo "${REPO}" -tag "${VERSION}"
 
