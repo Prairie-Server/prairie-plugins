@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Silo-Server/silo-plugins/catalog"
+	"github.com/prairie-server/prairie-plugins/catalog"
 )
 
 const githubAPIVersion = "2022-11-28"
@@ -77,7 +77,7 @@ func fetchSourceManifest(ctx context.Context, client *http.Client, token, repo, 
 	if err != nil {
 		return nil, fmt.Errorf("build request: %w", err)
 	}
-	req.Header.Set("User-Agent", "silo-plugins-catalog-updater")
+	req.Header.Set("User-Agent", "prairie-plugins-catalog-updater")
 	if token != "" {
 		req.Header.Set("Authorization", "Bearer "+token)
 	}
@@ -108,7 +108,7 @@ func githubJSON(ctx context.Context, client *http.Client, token, url string, des
 		return fmt.Errorf("build request: %w", err)
 	}
 	req.Header.Set("Accept", "application/vnd.github+json")
-	req.Header.Set("User-Agent", "silo-plugins-catalog-updater")
+	req.Header.Set("User-Agent", "prairie-plugins-catalog-updater")
 	req.Header.Set("X-GitHub-Api-Version", githubAPIVersion)
 	if token != "" {
 		req.Header.Set("Authorization", "Bearer "+token)

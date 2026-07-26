@@ -1,9 +1,9 @@
-module github.com/Silo-Server/silo-plugins
+module github.com/prairie-server/prairie-plugins
 
 go 1.26.0
 
 require (
-	github.com/Silo-Server/silo-plugin-sdk v0.10.0
+	github.com/prairie-server/prairie-plugin-sdk v0.12.1-0.20260726223239-3c6de05cade7
 	google.golang.org/protobuf v1.36.11
 )
 
