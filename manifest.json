@@ -255,7 +255,7 @@
     {
       "manifest": {
         "plugin_id": "prairie.manga-metadata",
-        "version": "0.1.1",
+        "version": "0.1.2",
         "prairie_api_version": "v1",
         "supported_platforms": [
           {
@@ -377,17 +377,17 @@
           "license_spdx": "AGPL-3.0-only"
         }
       },
-      "repo_url": "https://github.com/prairie-server/prairie-plugin-metadata-manga",
-      "checksums_url": "https://github.com/prairie-server/prairie-plugin-metadata-manga/releases/download/v0.1.1/checksums.txt",
+      "repo_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-manga",
+      "checksums_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-manga/releases/download/v0.1.2/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/prairie-server/prairie-plugin-metadata-manga/releases/download/v0.1.1/plugin-darwin-arm64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-manga/releases/download/v0.1.2/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/prairie-server/prairie-plugin-metadata-manga/releases/download/v0.1.1/plugin-linux-amd64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-manga/releases/download/v0.1.2/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/prairie-server/prairie-plugin-metadata-manga/releases/download/v0.1.1/plugin-linux-arm64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-manga/releases/download/v0.1.2/plugin-linux-arm64"
         }
       }
     },
