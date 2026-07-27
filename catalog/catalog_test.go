@@ -9,10 +9,10 @@ import (
 
 func TestBuildPackageFromRelease_MinimalManifestAndAssets(t *testing.T) {
 	source := &SourceManifest{
-		PluginId:       "prairie.tmdb",
-		Version:        "1.2.3",
+		PluginId:          "prairie.tmdb",
+		Version:           "1.2.3",
 		PrairieApiVersion: "v1",
-		Presentation:   catalogTestPresentation("https://github.com/prairie-server/prairie-plugin-metadata-tmdb"),
+		Presentation:      catalogTestPresentation("https://github.com/prairie-server/prairie-plugin-metadata-tmdb"),
 		Capabilities: []*pluginv1.CapabilityDescriptor{
 			{
 				Type:        "metadata_provider.v1",
@@ -60,10 +60,10 @@ func TestBuildPackageFromRelease_MinimalManifestAndAssets(t *testing.T) {
 
 func TestBuildPackageFromRelease_TagWinsOverManifestVersion(t *testing.T) {
 	source := &SourceManifest{
-		PluginId:       "prairie.tmdb",
-		Version:        "1.2.2",
+		PluginId:          "prairie.tmdb",
+		Version:           "1.2.2",
 		PrairieApiVersion: "v1",
-		Presentation:   catalogTestPresentation("https://github.com/prairie-server/prairie-plugin-metadata-tmdb"),
+		Presentation:      catalogTestPresentation("https://github.com/prairie-server/prairie-plugin-metadata-tmdb"),
 		Capabilities: []*pluginv1.CapabilityDescriptor{
 			{Type: "metadata_provider.v1", Id: "tmdb"},
 		},
@@ -87,8 +87,8 @@ func TestBuildPackageFromRelease_TagWinsOverManifestVersion(t *testing.T) {
 
 func TestBuildPackageFromRelease_RequiresCompletePresentation(t *testing.T) {
 	source := &SourceManifest{
-		PluginId:       "prairie.tmdb",
-		Version:        "1.2.3",
+		PluginId:          "prairie.tmdb",
+		Version:           "1.2.3",
 		PrairieApiVersion: "v1",
 		Capabilities: []*pluginv1.CapabilityDescriptor{
 			{Type: "metadata_provider.v1", Id: "tmdb"},
@@ -235,15 +235,15 @@ func TestUpsertPackage_ReplacesExistingPluginAndSorts(t *testing.T) {
 		Plugins: []CatalogPackage{
 			{
 				Manifest: &pluginv1.PluginManifest{
-					PluginId:       "prairie.tvdb",
-					Version:        "1.0.0",
+					PluginId:          "prairie.tvdb",
+					Version:           "1.0.0",
 					PrairieApiVersion: "v1",
 				},
 			},
 			{
 				Manifest: &pluginv1.PluginManifest{
-					PluginId:       "prairie.tmdb",
-					Version:        "1.0.0",
+					PluginId:          "prairie.tmdb",
+					Version:           "1.0.0",
 					PrairieApiVersion: "v1",
 				},
 			},
@@ -252,8 +252,8 @@ func TestUpsertPackage_ReplacesExistingPluginAndSorts(t *testing.T) {
 
 	updated := CatalogPackage{
 		Manifest: &pluginv1.PluginManifest{
-			PluginId:       "prairie.tmdb",
-			Version:        "1.2.3",
+			PluginId:          "prairie.tmdb",
+			Version:           "1.2.3",
 			PrairieApiVersion: "v1",
 		},
 		RepoURL: "https://github.com/prairie-server/prairie-plugin-metadata-tmdb",
@@ -282,8 +282,11 @@ func TestDecodeSourceManifestInvalidJSON(t *testing.T) {
 }
 
 func TestBuildPackageFromRelease_ErrorPaths(t *testing.T) {
+	const repo = "prairie-server/prairie-plugin-metadata-tmdb"
+
 	valid := &SourceManifest{
 		PluginId:          "prairie.tmdb",
+		Version:           "1.0.0",
 		PrairieApiVersion: "v1",
 		Presentation:      catalogTestPresentation("https://github.com/prairie-server/prairie-plugin-metadata-tmdb"),
 		Capabilities: []*pluginv1.CapabilityDescriptor{
@@ -307,16 +310,16 @@ func TestBuildPackageFromRelease_ErrorPaths(t *testing.T) {
 	if _, err := BuildPackageFromRelease("org/repo", &SourceManifest{PluginId: "x", PrairieApiVersion: "v1"}, Release{}); err == nil {
 		t.Fatal("expected capabilities required")
 	}
-	if _, err := BuildPackageFromRelease("org/repo", valid, Release{TagName: "  "}); err == nil {
+	if _, err := BuildPackageFromRelease(repo, valid, Release{TagName: "  "}); err == nil {
 		t.Fatal("expected tag_name required")
 	}
-	if _, err := BuildPackageFromRelease("org/repo", valid, Release{
+	if _, err := BuildPackageFromRelease(repo, valid, Release{
 		TagName: "v1.0.0",
 		Assets:  []Asset{{Name: "plugin-linux-amd64", BrowserDownloadURL: "https://example.invalid/bin"}},
 	}); err == nil {
 		t.Fatal("expected missing checksums.txt")
 	}
-	if _, err := BuildPackageFromRelease("org/repo", valid, Release{
+	if _, err := BuildPackageFromRelease(repo, valid, Release{
 		TagName: "v1.0.0",
 		Assets:  []Asset{{Name: "checksums.txt", BrowserDownloadURL: "https://example.invalid/c"}},
 	}); err == nil {
@@ -325,19 +328,19 @@ func TestBuildPackageFromRelease_ErrorPaths(t *testing.T) {
 
 	badCap := &SourceManifest{
 		PluginId:          "prairie.tmdb",
+		Version:           "1.0.0",
 		PrairieApiVersion: "v1",
 		Presentation:      catalogTestPresentation("https://github.com/prairie-server/prairie-plugin-metadata-tmdb"),
 		Capabilities: []*pluginv1.CapabilityDescriptor{
 			{Type: "", Id: "tmdb"},
 		},
 	}
-	if _, err := BuildPackageFromRelease("org/repo", badCap, Release{TagName: "v1.0.0", Assets: assets}); err == nil {
+	if _, err := BuildPackageFromRelease(repo, badCap, Release{TagName: "v1.0.0", Assets: assets}); err == nil {
 		t.Fatal("expected capability type/id required")
 	}
 
-	valid.Version = "1.0.0"
 	// Malformed plugin asset names are skipped; checksums still present with one good binary.
-	pkg, err := BuildPackageFromRelease("prairie-server/prairie-plugin-metadata-tmdb", valid, Release{
+	pkg, err := BuildPackageFromRelease(repo, valid, Release{
 		TagName: "v1.0.0",
 		Assets: []Asset{
 			{Name: "plugin-bad", BrowserDownloadURL: "https://example.invalid/bad"},
