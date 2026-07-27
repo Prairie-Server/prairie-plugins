@@ -933,7 +933,7 @@
     {
       "manifest": {
         "plugin_id": "prairie.tmdb",
-        "version": "1.2.20",
+        "version": "1.2.21",
         "prairie_api_version": "v1",
         "supported_platforms": [
           {
@@ -991,17 +991,17 @@
           "license_spdx": "AGPL-3.0-or-later"
         }
       },
-      "repo_url": "https://github.com/prairie-server/prairie-plugin-metadata-tmdb",
-      "checksums_url": "https://github.com/prairie-server/prairie-plugin-metadata-tmdb/releases/download/v1.2.20/checksums.txt",
+      "repo_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb",
+      "checksums_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb/releases/download/v1.2.21/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/prairie-server/prairie-plugin-metadata-tmdb/releases/download/v1.2.20/plugin-darwin-arm64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb/releases/download/v1.2.21/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/prairie-server/prairie-plugin-metadata-tmdb/releases/download/v1.2.20/plugin-linux-amd64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb/releases/download/v1.2.21/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/prairie-server/prairie-plugin-metadata-tmdb/releases/download/v1.2.20/plugin-linux-arm64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb/releases/download/v1.2.21/plugin-linux-arm64"
         }
       }
     },
