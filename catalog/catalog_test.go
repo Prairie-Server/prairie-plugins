@@ -274,3 +274,101 @@ func TestUpsertPackage_ReplacesExistingPluginAndSorts(t *testing.T) {
 		t.Fatalf("Plugins[1].PluginID = %q", index.Plugins[1].Manifest.GetPluginId())
 	}
 }
+
+func TestDecodeSourceManifestInvalidJSON(t *testing.T) {
+	if _, err := DecodeSourceManifest([]byte(`{not-json`)); err == nil {
+		t.Fatal("expected decode error")
+	}
+}
+
+func TestBuildPackageFromRelease_ErrorPaths(t *testing.T) {
+	valid := &SourceManifest{
+		PluginId:          "prairie.tmdb",
+		PrairieApiVersion: "v1",
+		Presentation:      catalogTestPresentation("https://github.com/prairie-server/prairie-plugin-metadata-tmdb"),
+		Capabilities: []*pluginv1.CapabilityDescriptor{
+			{Type: "metadata_provider.v1", Id: "tmdb"},
+		},
+	}
+	assets := []Asset{
+		{Name: "plugin-linux-amd64", BrowserDownloadURL: "https://example.invalid/bin"},
+		{Name: "checksums.txt", BrowserDownloadURL: "https://example.invalid/checksums.txt"},
+	}
+
+	if _, err := BuildPackageFromRelease("org/repo", nil, Release{}); err == nil {
+		t.Fatal("expected nil source error")
+	}
+	if _, err := BuildPackageFromRelease("org/repo", &SourceManifest{}, Release{}); err == nil {
+		t.Fatal("expected plugin_id required")
+	}
+	if _, err := BuildPackageFromRelease("org/repo", &SourceManifest{PluginId: "x"}, Release{}); err == nil {
+		t.Fatal("expected prairie_api_version required")
+	}
+	if _, err := BuildPackageFromRelease("org/repo", &SourceManifest{PluginId: "x", PrairieApiVersion: "v1"}, Release{}); err == nil {
+		t.Fatal("expected capabilities required")
+	}
+	if _, err := BuildPackageFromRelease("org/repo", valid, Release{TagName: "  "}); err == nil {
+		t.Fatal("expected tag_name required")
+	}
+	if _, err := BuildPackageFromRelease("org/repo", valid, Release{
+		TagName: "v1.0.0",
+		Assets:  []Asset{{Name: "plugin-linux-amd64", BrowserDownloadURL: "https://example.invalid/bin"}},
+	}); err == nil {
+		t.Fatal("expected missing checksums.txt")
+	}
+	if _, err := BuildPackageFromRelease("org/repo", valid, Release{
+		TagName: "v1.0.0",
+		Assets:  []Asset{{Name: "checksums.txt", BrowserDownloadURL: "https://example.invalid/c"}},
+	}); err == nil {
+		t.Fatal("expected missing binaries")
+	}
+
+	badCap := &SourceManifest{
+		PluginId:          "prairie.tmdb",
+		PrairieApiVersion: "v1",
+		Presentation:      catalogTestPresentation("https://github.com/prairie-server/prairie-plugin-metadata-tmdb"),
+		Capabilities: []*pluginv1.CapabilityDescriptor{
+			{Type: "", Id: "tmdb"},
+		},
+	}
+	if _, err := BuildPackageFromRelease("org/repo", badCap, Release{TagName: "v1.0.0", Assets: assets}); err == nil {
+		t.Fatal("expected capability type/id required")
+	}
+
+	valid.Version = "1.0.0"
+	// Malformed plugin asset names are skipped; checksums still present with one good binary.
+	pkg, err := BuildPackageFromRelease("prairie-server/prairie-plugin-metadata-tmdb", valid, Release{
+		TagName: "v1.0.0",
+		Assets: []Asset{
+			{Name: "plugin-bad", BrowserDownloadURL: "https://example.invalid/bad"},
+			{Name: "plugin--amd64", BrowserDownloadURL: "https://example.invalid/bad2"},
+			{Name: "plugin-linux-amd64", BrowserDownloadURL: "https://example.invalid/bin"},
+			{Name: "checksums.txt", BrowserDownloadURL: "https://example.invalid/c"},
+		},
+	})
+	if err != nil {
+		t.Fatalf("BuildPackageFromRelease: %v", err)
+	}
+	if _, ok := pkg.Binaries["linux/amd64"]; !ok {
+		t.Fatal("expected linux/amd64 binary")
+	}
+}
+
+func TestPackagePluginIDAndPlatformKey(t *testing.T) {
+	if got := packagePluginID(CatalogPackage{}); got != "" {
+		t.Fatalf("nil manifest id = %q", got)
+	}
+	if _, ok := platformKeyFromAssetName("plugin"); ok {
+		t.Fatal("expected reject short name")
+	}
+	if _, ok := platformKeyFromAssetName("other-linux-amd64"); ok {
+		t.Fatal("expected reject non-plugin prefix")
+	}
+	if _, ok := platformKeyFromAssetName("plugin--amd64"); ok {
+		t.Fatal("expected reject empty os")
+	}
+	key, ok := platformKeyFromAssetName("plugin-darwin-arm64")
+	if !ok || key != "darwin/arm64" {
+		t.Fatalf("got %q ok=%v", key, ok)
+	}
+}
