@@ -3,7 +3,7 @@
     {
       "manifest": {
         "plugin_id": "prairie.audiobook-metadata",
-        "version": "0.1.4",
+        "version": "0.1.5",
         "prairie_api_version": "v1",
         "supported_platforms": [
           {
@@ -46,17 +46,17 @@
           "license_spdx": "AGPL-3.0-only"
         }
       },
-      "repo_url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook",
-      "checksums_url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook/releases/download/v0.1.4/checksums.txt",
+      "repo_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-audiobook",
+      "checksums_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-audiobook/releases/download/v0.1.5/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook/releases/download/v0.1.4/plugin-darwin-arm64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-audiobook/releases/download/v0.1.5/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook/releases/download/v0.1.4/plugin-linux-amd64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-audiobook/releases/download/v0.1.5/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/prairie-server/prairie-plugin-metadata-audiobook/releases/download/v0.1.4/plugin-linux-arm64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-audiobook/releases/download/v0.1.5/plugin-linux-arm64"
         }
       }
     },
