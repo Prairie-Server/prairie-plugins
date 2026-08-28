@@ -3,7 +3,7 @@ module github.com/prairie-server/prairie-plugins
 go 1.26.0
 
 require (
-	github.com/prairie-server/prairie-plugin-sdk v0.12.1-0.20260726225228-1dfb0aebf7e0
+	github.com/prairie-server/prairie-plugin-sdk v0.12.1-0.20260828014014-de2fc8135237
 	google.golang.org/protobuf v1.36.11
 )
 
