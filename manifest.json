@@ -393,6 +393,93 @@
     },
     {
       "manifest": {
+        "plugin_id": "prairie.mdblist",
+        "version": "0.4.0",
+        "prairie_api_version": "v1",
+        "supported_platforms": [
+          {
+            "os": "darwin",
+            "arch": "arm64"
+          },
+          {
+            "os": "linux",
+            "arch": "amd64"
+          },
+          {
+            "os": "linux",
+            "arch": "arm64"
+          }
+        ],
+        "capabilities": [
+          {
+            "type": "metadata_provider.v1",
+            "id": "mdblist",
+            "display_name": "MDBList",
+            "description": "Ratings from every source MDBList aggregates, age rating, certification, and missing basics. Enrichment only — never identifies an item.",
+            "metadata": {
+              "bulk_lookup_limit": 100,
+              "default_priority": {
+                "movie": 8,
+                "series": 8
+              },
+              "lookup_provider_ids": [
+                "imdb",
+                "tmdb"
+              ]
+            }
+          }
+        ],
+        "global_config_schema": [
+          {
+            "key": "account",
+            "title": "MDBList Account",
+            "description": "MDBList API key. Without it the provider stays idle and contributes nothing.",
+            "json_schema": "{\"type\":\"object\",\"properties\":{\"api_key\":{\"type\":\"string\"}},\"additionalProperties\":false}",
+            "required": true,
+            "admin_form": {
+              "fields": [
+                {
+                  "key": "api_key",
+                  "label": "API Key",
+                  "description": "Free API key from your MDBList preferences page.",
+                  "control": 3,
+                  "secret": true
+                }
+              ],
+              "submit_label": "Save MDBList account"
+            }
+          }
+        ],
+        "presentation": {
+          "display_name": "MDBList Ratings",
+          "summary": "Ratings from every major source, age ratings, and missing basics from MDBList.",
+          "description_markdown": "Fills in what other metadata providers leave empty: IMDb, TMDB, Rotten Tomatoes critic and audience, Metacritic, Letterboxd, Trakt, Roger Ebert, and MyAnimeList ratings, MDBList's own score, the Common Sense age rating, the release certification, and basics such as year, release date, runtime, language, genres, and show status.\n\nThis provider never identifies an item. It looks up titles that another provider has already matched, using the IMDb or TMDB ID that provider resolved, so it must sit *below* a primary metadata provider such as TMDB in a library's provider chain.",
+          "setup_markdown": "Create a free API key in your MDBList preferences, add it below, then add **MDBList** to a library's metadata provider chain at a lower priority than your primary provider.\n\nThe free tier allows 1000 requests per day. Lookups that arrive together are sent as one batch request, and Prairie's hourly Bulk Metadata Enrichment task sends up to 100 titles at a time. When the quota runs out the plugin pauses until it resets and tells Prairie so, and Prairie looks those titles up again later; it never fails a metadata refresh.",
+          "homepage_url": "https://mdblist.com",
+          "source_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-mdblist",
+          "support_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-mdblist/issues",
+          "changelog_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-mdblist/releases",
+          "publisher_name": "Prairie",
+          "publisher_url": "https://github.com/Prairie-Server",
+          "license_spdx": "AGPL-3.0-only"
+        }
+      },
+      "repo_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-mdblist",
+      "checksums_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-mdblist/releases/download/v0.4.0/checksums.txt",
+      "binaries": {
+        "darwin/arm64": {
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-mdblist/releases/download/v0.4.0/plugin-darwin-arm64"
+        },
+        "linux/amd64": {
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-mdblist/releases/download/v0.4.0/plugin-linux-amd64"
+        },
+        "linux/arm64": {
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-mdblist/releases/download/v0.4.0/plugin-linux-arm64"
+        }
+      }
+    },
+    {
+      "manifest": {
         "plugin_id": "prairie.requests.arr",
         "version": "0.1.0",
         "prairie_api_version": "v1",
@@ -807,7 +894,7 @@
             "key": "sportarr",
             "title": "Sportarr",
             "description": "Configure Sportarr API access",
-            "json_schema": "{\"type\":\"object\",\"properties\":{\"base_url\":{\"type\":\"string\"},\"api_key\":{\"type\":\"string\"}},\"additionalProperties\":false}",
+            "json_schema": "{\"type\":\"object\",\"properties\":{\"base_url\":{\"type\":\"string\"}}}",
             "admin_form": {
               "fields": [
                 {
@@ -816,13 +903,6 @@
                   "description": "Sportarr instance URL. Defaults to https://sportarr.net if left empty.",
                   "control": 1,
                   "placeholder": "https://sportarr.net"
-                },
-                {
-                  "key": "api_key",
-                  "label": "API Key",
-                  "description": "API key for protected image endpoints on a self-hosted Sportarr instance.",
-                  "control": 3,
-                  "secret": true
                 }
               ]
             }
@@ -832,7 +912,7 @@
           "display_name": "Sportarr Metadata",
           "summary": "Build sports libraries from Sportarr league, season, and event metadata.",
           "description_markdown": "Maps Sportarr leagues to series, seasons to seasons, and events to episodes so sports libraries behave like familiar TV libraries in Prairie. The provider is installed disabled by default so administrators can opt in where it fits their library layout.",
-          "setup_markdown": "Install the plugin, configure the Sportarr base URL if you do not use `https://sportarr.net`, and add the instance API key when its protected image API is enabled. Then enable **Sportarr Metadata** in the metadata provider chain for the relevant sports library.",
+          "setup_markdown": "Install the plugin, configure the Sportarr base URL if you do not use `https://sportarr.net`, then enable **Sportarr Metadata** in the metadata provider chain for the relevant sports library.",
           "homepage_url": "https://sportarr.net",
           "source_url": "https://github.com/prairie-server/prairie-plugin-metadata-sportarr",
           "support_url": "https://github.com/prairie-server/prairie-plugin-metadata-sportarr/issues",
@@ -940,7 +1020,7 @@
     {
       "manifest": {
         "plugin_id": "prairie.tmdb",
-        "version": "1.2.23",
+        "version": "1.2.21",
         "prairie_api_version": "v1",
         "supported_platforms": [
           {
@@ -999,23 +1079,23 @@
         }
       },
       "repo_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb",
-      "checksums_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb/releases/download/v1.2.23/checksums.txt",
+      "checksums_url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb/releases/download/v1.2.21/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb/releases/download/v1.2.23/plugin-darwin-arm64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb/releases/download/v1.2.21/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb/releases/download/v1.2.23/plugin-linux-amd64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb/releases/download/v1.2.21/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb/releases/download/v1.2.23/plugin-linux-arm64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tmdb/releases/download/v1.2.21/plugin-linux-arm64"
         }
       }
     },
     {
       "manifest": {
         "plugin_id": "prairie.tvdb",
-        "version": "1.3.0",
+        "version": "1.2.25",
         "prairie_api_version": "v1",
         "supported_platforms": [
           {
@@ -1085,5 +1165,105 @@
           "url": "https://github.com/Prairie-Server/prairie-plugin-metadata-tvdb/releases/download/v1.2.25/plugin-linux-arm64"
         }
       }
+    },
+    {
+      "manifest": {
+        "plugin_id": "prairie.watchprovider.floppy",
+        "version": "0.3.0",
+        "prairie_api_version": "v1",
+        "supported_platforms": [
+          {
+            "os": "darwin",
+            "arch": "arm64"
+          },
+          {
+            "os": "linux",
+            "arch": "amd64"
+          },
+          {
+            "os": "linux",
+            "arch": "arm64"
+          }
+        ],
+        "capabilities": [
+          {
+            "type": "watch_sync_provider.v1",
+            "id": "floppy",
+            "display_name": "Floppy",
+            "description": "Bidirectional watch history, movie and series ratings, resume progress, and live scrobbling for a self-hosted Floppy instance.",
+            "config_schema": [
+              {
+                "key": "floppy",
+                "title": "Your Floppy server",
+                "description": "Connection details for the Floppy server used by this profile.",
+                "json_schema": "{\"type\":\"object\",\"properties\":{\"base_url\":{\"type\":\"string\",\"format\":\"uri\"}},\"required\":[\"base_url\"],\"additionalProperties\":false}",
+                "required": true,
+                "admin_form": {
+                  "fields": [
+                    {
+                      "key": "base_url",
+                      "label": "Floppy server URL",
+                      "description": "Root URL of your Floppy instance. API paths are added automatically.",
+                      "control": 1,
+                      "placeholder": "https://floppy.example.com",
+                      "required": true
+                    }
+                  ]
+                }
+              }
+            ],
+            "watch_sync_provider": {
+              "auth_methods": [
+                2
+              ],
+              "export_watched": true,
+              "import_watched": true,
+              "import_progress": true,
+              "supported_media_types": [
+                1,
+                2,
+                3
+              ],
+              "external_id_namespaces": [
+                "tmdb",
+                "imdb",
+                "tvdb"
+              ],
+              "max_batch_size": 50,
+              "scrobble_playback": true,
+              "import_ratings": true,
+              "export_ratings": true
+            }
+          }
+        ],
+        "category": "Watch Providers",
+        "presentation": {
+          "display_name": "Floppy Watch Provider",
+          "summary": "Sync Prairie watch activity with a self-hosted Floppy instance.",
+          "description_markdown": "Imports movie and episode history and resume progress, exports completed watches, syncs movie and series ratings in both directions, and forwards live playback start, pause, and stop events.",
+          "setup_markdown": "Connect a Prairie profile by entering that profile's Floppy server URL and API token. Different profiles can use different Floppy servers. A scoped Floppy token needs the tracking preset; sending ratings to Floppy uses its `watchlist:write` scope.",
+          "homepage_url": "https://github.com/dannyvfilms/Floppy",
+          "source_url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy",
+          "support_url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/issues",
+          "changelog_url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases",
+          "publisher_name": "Prairie Server",
+          "publisher_url": "https://github.com/Prairie-Server",
+          "license_spdx": "AGPL-3.0-only"
+        }
+      },
+      "repo_url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy",
+      "checksums_url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases/download/v0.3.0/checksums.txt",
+      "binaries": {
+        "darwin/arm64": {
+          "url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases/download/v0.3.0/plugin-darwin-arm64"
+        },
+        "linux/amd64": {
+          "url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases/download/v0.3.0/plugin-linux-amd64"
+        },
+        "linux/arm64": {
+          "url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases/download/v0.3.0/plugin-linux-arm64"
+        }
+      }
+    }
   ]
 }
