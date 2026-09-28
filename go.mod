@@ -3,14 +3,14 @@ module github.com/prairie-server/prairie-plugins
 go 1.26.0
 
 require (
-	github.com/prairie-server/prairie-plugin-sdk v0.12.1-0.20260828014014-de2fc8135237
+	github.com/prairie-server/prairie-plugin-sdk v0.12.1-0.20260928142658-1b20b2f74c42
 	google.golang.org/protobuf v1.36.11
 )
 
 require (
-	golang.org/x/net v0.48.0 // indirect
-	golang.org/x/sys v0.39.0 // indirect
-	golang.org/x/text v0.32.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251202230838-ff82c1b0f217 // indirect
-	google.golang.org/grpc v1.75.1 // indirect
+	golang.org/x/net v0.55.0 // indirect
+	golang.org/x/sys v0.45.0 // indirect
+	golang.org/x/text v0.37.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260414002931-afd174a4e478 // indirect
+	google.golang.org/grpc v1.82.1 // indirect
 )
