@@ -1169,7 +1169,7 @@
     {
       "manifest": {
         "plugin_id": "prairie.watchprovider.floppy",
-        "version": "0.3.0",
+        "version": "0.3.1",
         "prairie_api_version": "v1",
         "supported_platforms": [
           {
@@ -1243,25 +1243,25 @@
           "description_markdown": "Imports movie and episode history and resume progress, exports completed watches, syncs movie and series ratings in both directions, and forwards live playback start, pause, and stop events.",
           "setup_markdown": "Connect a Prairie profile by entering that profile's Floppy server URL and API token. Different profiles can use different Floppy servers. A scoped Floppy token needs the tracking preset; sending ratings to Floppy uses its `watchlist:write` scope.",
           "homepage_url": "https://github.com/dannyvfilms/Floppy",
-          "source_url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy",
-          "support_url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/issues",
-          "changelog_url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases",
-          "publisher_name": "Prairie Server",
-          "publisher_url": "https://github.com/Prairie-Server",
+          "source_url": "https://github.com/prairie-server/prairie-plugin-watchprovider-floppy",
+          "support_url": "https://github.com/prairie-server/prairie-plugin-watchprovider-floppy/issues",
+          "changelog_url": "https://github.com/prairie-server/prairie-plugin-watchprovider-floppy/releases",
+          "publisher_name": "Prairie",
+          "publisher_url": "https://github.com/prairie-server",
           "license_spdx": "AGPL-3.0-only"
         }
       },
       "repo_url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy",
-      "checksums_url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases/download/v0.3.0/checksums.txt",
+      "checksums_url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases/download/v0.3.1/checksums.txt",
       "binaries": {
         "darwin/arm64": {
-          "url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases/download/v0.3.0/plugin-darwin-arm64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases/download/v0.3.1/plugin-darwin-arm64"
         },
         "linux/amd64": {
-          "url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases/download/v0.3.0/plugin-linux-amd64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases/download/v0.3.1/plugin-linux-amd64"
         },
         "linux/arm64": {
-          "url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases/download/v0.3.0/plugin-linux-arm64"
+          "url": "https://github.com/Prairie-Server/prairie-plugin-watchprovider-floppy/releases/download/v0.3.1/plugin-linux-arm64"
         }
       }
     }
