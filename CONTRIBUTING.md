@@ -30,7 +30,18 @@ go test ./...
 go vet ./...
 go build ./...
 gofmt -l .
+golangci-lint run ./...
+go test $(go list ./... | grep -v '/cmd/') -count=1 -covermode=atomic -coverprofile=coverage.out
+./scripts/check-coverage.sh coverage.out
+python3 scripts/validate-manifest.py manifest.json
 ```
+
+CI runs golangci-lint v2.14.0, enforces a 95% statement coverage floor
+(`scripts/check-coverage.sh`), and checks that `manifest.json` parses and that
+every download URL is a well-formed release-asset URL for the entry's own
+repository and version tag. The last four commands reproduce those checks.
+`validate-manifest.py` makes no network requests, so it cannot tell whether a
+release actually exists.
 
 `gofmt -l .` should print nothing. If it reports unrelated pre-existing drift,
 none of the Go files touched by your change may appear in the output; do not add

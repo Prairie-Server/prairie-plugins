@@ -10,8 +10,6 @@ on:
         options:
           - audiobook-metadata
           - autoscan-arr
-          - requests-arr
-          - requests-seerr
           - sportarr
           - tmdb
           - tvdb
@@ -30,11 +28,11 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           token: ${{ secrets.CATALOG_PUSH_TOKEN }}
 
-      - uses: actions/setup-go@v7
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version: "1.26"
 
@@ -47,8 +45,6 @@ jobs:
           case "${PLUGIN}" in
             audiobook-metadata) REPO="prairie-server/prairie-plugin-metadata-audiobook" ;;
             autoscan-arr) REPO="prairie-server/prairie-plugin-autoscan-arr" ;;
-            requests-arr) REPO="prairie-server/prairie-plugins-requests-arr" ;;
-            requests-seerr) REPO="prairie-server/prairie-plugins-requests-seerr" ;;
             sportarr) REPO="prairie-server/prairie-plugin-metadata-sportarr" ;;
             tmdb) REPO="prairie-server/prairie-plugin-metadata-tmdb" ;;
             tvdb) REPO="prairie-server/prairie-plugin-metadata-tvdb" ;;
